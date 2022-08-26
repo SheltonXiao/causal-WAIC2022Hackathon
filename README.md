@@ -13,34 +13,34 @@ author：SheltonXiao
 > missingno == 0.5.1
 ## 文件结构
 > |-- causal-WAIC2022Hackathon    
->         |-- README.md    
->         |-- code     
->         |         |-- A01 causal_discovery.ipynb      
->         |         |-- A02 treatment prediction.ipynb      
->         |-- data     
->         |         |-- test.csv      
->         |         |-- train.csv      
->         |         |-- processed      
->         |                 |-- test_cleaned.csv      
->         |                 |-- test_nn.csv      
->         |                 |-- test_nnfilled3.csv      
->         |                 |-- train_cleaned.csv     
->         |                 |-- train_label.csv      
->         |                 |-- train_label2.csv      
->         |                 |-- train_nn.csv       
->         |                 |-- train_nnfilled3.csv     
->         |-- datareport     
->         |         |-- train_outcome_treatment1.html     
->         |         |-- train_outcome_treatment2.html     
->         |         |-- train_outcome_treatment_no0.html     
->         |-- output     
->         |         |-- result.csv     
->         |         |-- result082205 5fold07445.csv     
->         |-- pic     
->                   |-- output1.png     
->                   |-- output2.png    
->                   |-- output3.png    
->                   |-- output4.png    
+> |        |-- README.md    
+> |        |-- code     
+> |        |         |-- A01 causal_discovery.ipynb      
+> |        |         |-- A02 treatment prediction.ipynb      
+> |        |-- data     
+> |        |         |-- test.csv      
+> |        |         |-- train.csv      
+> |        |         |-- processed      
+> |        |         |        |-- test_cleaned.csv      
+> |        |         |        |-- test_nn.csv      
+> |        |         |        |-- test_nnfilled3.csv      
+> |        |         |        |-- train_cleaned.csv     
+> |        |         |        |-- train_label.csv      
+> |        |         |        |-- train_label2.csv      
+> |        |         |        |-- train_nn.csv       
+> |        |         |        |-- train_nnfilled3.csv     
+> |        |-- datareport     
+> |        |         |-- train_outcome_treatment1.html     
+> |        |         |-- train_outcome_treatment2.html     
+> |        |         |-- train_outcome_treatment_no0.html     
+> |        |-- output     
+> |        |         |-- result.csv     
+> |        |         |-- result082205 5fold07445.csv     
+> |        |-- pic     
+> |        |         |-- output1.png     
+> |        |         |-- output2.png    
+> |        |         |-- output3.png    
+> |        |         |-- output4.png    
 ## 实现过程
 ### 1 causal discovery & data preprocessing
 涉及代码含于 code/A01 causal_discovery.ipynb中，包含以下几个步骤：
