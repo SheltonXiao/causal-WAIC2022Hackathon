@@ -12,35 +12,35 @@ author：SheltonXiao
 > sweetviz == 2.1.4    
 > missingno == 0.5.1
 ## 文件结构
-|-- causal-WAIC2022Hackathon    
-    |-- README.md    
-    |-- code     
-    |   |-- A01 causal_discovery.ipynb      
-    |   |-- A02 treatment prediction.ipynb      
-    |-- data     
-    |   |-- test.csv      
-    |   |-- train.csv      
-    |   |-- processed      
-    |       |-- test_cleaned.csv      
-    |       |-- test_nn.csv      
-    |       |-- test_nnfilled3.csv      
-    |       |-- train_cleaned.csv     
-    |       |-- train_label.csv      
-    |       |-- train_label2.csv      
-    |       |-- train_nn.csv       
-    |       |-- train_nnfilled3.csv     
-    |-- datareport     
-    |   |-- train_outcome_treatment1.html     
-    |   |-- train_outcome_treatment2.html     
-    |   |-- train_outcome_treatment_no0.html     
-    |-- output     
-    |   |-- result.csv     
-    |   |-- result082205 5fold07445.csv     
-    |-- pic     
-        |-- output1.png     
-        |-- output2.png    
-        |-- output3.png    
-        |-- output4.png    
+> |-- causal-WAIC2022Hackathon    
+>     |-- README.md    
+>     |-- code     
+>     |   |-- A01 causal_discovery.ipynb      
+>     |   |-- A02 treatment prediction.ipynb      
+>     |-- data     
+>     |   |-- test.csv      
+>     |   |-- train.csv      
+>     |   |-- processed      
+>     |       |-- test_cleaned.csv      
+>     |       |-- test_nn.csv      
+>     |       |-- test_nnfilled3.csv      
+>     |       |-- train_cleaned.csv     
+>     |       |-- train_label.csv      
+>     |       |-- train_label2.csv      
+>     |       |-- train_nn.csv       
+>     |       |-- train_nnfilled3.csv     
+>     |-- datareport     
+>     |   |-- train_outcome_treatment1.html     
+>     |   |-- train_outcome_treatment2.html     
+>     |   |-- train_outcome_treatment_no0.html     
+>     |-- output     
+>     |   |-- result.csv     
+>     |   |-- result082205 5fold07445.csv     
+>     |-- pic     
+>         |-- output1.png     
+>         |-- output2.png    
+>         |-- output3.png    
+>         |-- output4.png    
 ## 实现过程
 ### 1 causal discovery & data preprocessing
 涉及代码含于 code/A01 causal_discovery.ipynb中，包含以下几个步骤：
@@ -53,10 +53,10 @@ author：SheltonXiao
 可以发现treatment = 1存在类别不均衡。
 #### causal discovery 因果发现
 综合考虑，采用casual-learn实现的PC算法，分为以下几步：     
-    - 去除关联弱的变量      
+- 去除关联弱的变量      
     此处参考赛事提供baseline的变量重要性方法，把此部分变量去除后有效提高了PC的计算速度。     
     - 对所有变量进行PC算法因果发现     
-    ! [image1] (pic/output1.png)    
+    ! [image1](pic/output1.png)    
     - 分组      
     结合题目提供的图，可以将变量分成两组     
     ```python
@@ -64,15 +64,15 @@ author：SheltonXiao
         C1W = ["V_"+str(each) for each in [1,32,30,11,18,35]]
     ```     
     - 对分组后的变量进行PC算法因果发现     
-    ! [image2] (pic/output2.png)     
+    ! [image2](pic/output2.png)     
     可以进一步挑选跟outcome，treatment直接相关的变量作为模型输入（以减少过拟合）。     
 #### data preprocessing 数据预处理
 分为两部分，一部分是填补缺失数据，在赛事提供baseline的基本结构上修改；另一部分是根据数据离群情况进行分片后填补数据。此部分只补了变量集W1C中的数据。     
 - 填补缺失数据
-! [image3] (pic/output3.png)
+! [image3](pic/output3.png)
 根据因果发现探索得出的因果图上，待补节点的相邻节点数据，训练模型进行填补。处理后数据存储在data/processed/train_nnfilled3.csv，data/processed/test_nnfilled3.csv。
 - 根据数据离群情况进行分片后填补数据
-! [image4] (pic/output4.png)
+! [image4](pic/output4.png)
 针对变量V_28，其存在较多离群数据，同时又是缺失数据列，故对数据进行分片处理后填补数据。处理后数据存储在data/processed/train_cleaned.csv，data/processed/test_cleaned.csv，分片的mask存储在data/processed/train_label.csv，data/processed/train_label2.csv。
 ### 2 treatment prediction
 涉及代码含于 code/A02 treatment prediction.ipynb中，此处只摘选了形成最后结果的模型，中间还尝试过ecoml提供的因果森林，以及更换过dml的基模型为xgboost或lightgbm，但效果均为达到预期。包含以下几个步骤：
