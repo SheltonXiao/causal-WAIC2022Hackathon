@@ -1,4 +1,6 @@
 # causal-WAIC2022Hackathon
+2022 WAIC 黑客松九章云极赛道-因果学习和决策优化挑战赛 Top 8     
+[阿里云天池赛事地址](https://tianchi.aliyun.com/competition/entrance/532019/introduction?spm=5176.12281925.0.0.124c7137VX1Tht)     
 author：SheltonXiao     
 队名：因果小白桶
 ## 运行环境
